@@ -1,3 +1,0 @@
-/home/erka/vscode/cpptet/cmake-build-debug/CMakeFiles/cpptet.dir
-/home/erka/vscode/cpptet/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/erka/vscode/cpptet/cmake-build-debug/CMakeFiles/rebuild_cache.dir
