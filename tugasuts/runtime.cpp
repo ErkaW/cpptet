@@ -3,14 +3,36 @@
 #include <vector>
 #include <algorithm>
 #include <stdlib.h>
+#include <ctime>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
 using namespace std;
 
+void waktubeli(){
+    int jam,menit,detik;
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    jam = ltm->tm_hour;
+    menit = ltm->tm_min;
+    detik = ltm->tm_sec;
+    cout << "Waktu   : " << jam << ":" << menit << ":" << detik << endl;
+}
+void tanggalbeli(){
+    int tanggal, bulan, tahun;
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    tanggal = ltm->tm_mday;
+    bulan = ltm->tm_mon + 1;
+    tahun = ltm->tm_year + 1900;
+    cout << "Tanggal : " << tanggal << "/" << bulan << "/" << tahun << "\t";
+}
 void headerpesan(){
     cout << endl;
     cout << "===========================================" << endl;
     cout << "         Selamat Datang di Kopikita        " << endl;
     cout << "===========================================" << endl;
-    cout << endl;
+    tan
     cout << "Silahkan memilih pesanan anda" << endl;
     cout << "-------------------------------------------" << endl;
 }
@@ -20,7 +42,6 @@ void headerstruk(){
     cout << "       Terima Kasih Telah Berbelanja       " << endl;
     cout << "                di Kopikita                " << endl;
     cout << "===========================================" << endl;
-    cout << endl;
     cout << "Struk Pembelian" << endl;
     cout << "-------------------------------------------" << endl;
 }
@@ -49,7 +70,6 @@ void transaksi(){
     string pilihan;
     cout << "Masukkan ID Kopi : ";
     cin >> idbarang;
-    
     cout << "Masukkan Jumlah Pesanan : ";
     cin >> jumlahbarang;
     switch (idbarang){
@@ -117,7 +137,7 @@ void transaksi(){
             cout << "Kopi tidak tersedia" << endl;
             break;
     }
-    cout << "Total Harga : " << total << endl;
+    cout << "Total Harga : " << "Rp." << total << endl;
     cout << "===========================================" << endl;
     cout << "Apakah anda ingin memesan lagi? (y/n) : ";
     cin >> pilihan;
@@ -138,18 +158,18 @@ void transaksi(){
         int i;
         for(i=0;i<10;i++){
             if(totalharga[i] != 0){
-                cout<<i+1<<"\t"<<namakopi[i]<<"\t"<<totalharga[i]/hargabeli[i]<<"\t"<<totalharga[i]<<endl;
+                cout<<i+1<<"\t"<<namakopi[i]<<"\t"<<totalharga[i]/hargabeli[i]<<"\t"<< "Rp." <<totalharga[i]<<endl;
             }
         }
     }
     cout << "===========================================" << endl;
-    cout << "Total Harga : \t\t\t" << total << endl;
-    cout << "Masukkan uang anda : \t\t";
+    cout << "Total Harga : \t\t\t" << "Rp." << total << endl;
+    cout << "Masukkan uang anda : \t\t" << "Rp.";
     int uang;
     cin >> uang;
     int kembalian;
     kembalian = uang - total;
-    cout << "Kembalian anda adalah : \t" << kembalian << endl;
+    cout << "Kembalian anda adalah : \t" << "Rp." << kembalian << endl;
 }
 void footer(){
     cout << "===========================================" << endl;
