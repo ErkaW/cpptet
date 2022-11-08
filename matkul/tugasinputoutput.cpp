@@ -10,7 +10,7 @@ int main(){
     cout << "Masukkan jumlah angka yang akan ditambah : ";
     cin >> n;
     cout << endl;
-    b=0,i=1;
+    i=1;
     Putar:
     if(i<=n){
         cout << "Masukkan angka ke-" << i << " : ";
@@ -24,4 +24,3 @@ int main(){
     }
     return 0;
 }
-

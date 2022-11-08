@@ -32,7 +32,6 @@ void headerpesan(){
     cout << "===========================================" << endl;
     cout << "         Selamat Datang di Kopikita        " << endl;
     cout << "===========================================" << endl;
-    tan
     cout << "Silahkan memilih pesanan anda" << endl;
     cout << "-------------------------------------------" << endl;
 }
