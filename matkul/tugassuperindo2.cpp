@@ -4,6 +4,7 @@
 #include <map>
 #include <ctime>
 #include <stdlib.h>
+#include <fstream>
 using namespace std;
 void waktu(){
     time_t now = time(0);
@@ -37,25 +38,34 @@ void clear(){
 int ID[100];
 string Nama[100];
 int Harga[100];
-string daftar(int x){
-    string Pilihan = "";
-    switch (x)
-    {
-        case 1: Pilihan = "1/Jagung Manis/5000"; break;
-        case 2: Pilihan = "2/Kopi Bubuk/15000"; break;
-        case 3: Pilihan = "3/Susu SKM/20000"; break;
-        case 4: Pilihan = "4/Mie Indomie/3000"; break;
-        case 5: Pilihan = "5/Apel Merah/9000"; break;
-    default:
-        Pilihan = "";
-        break;
+string records[100];
+int banyakPilihan() {
+    ifstream file("produk.txt");
+    string line;
+    int i = 0;
+    while (getline(file, line)) {
+        i++;
     }
-    return Pilihan;
+    file.close();
+    return i;
+}
+void openFile(){
+    ifstream file("produk.txt");
+    string line;
+    int i = 0;
+    while (getline(file, line)) {
+        records[i] = line;
+        i++;
+    }
+    file.close();
+}
+string daftar(int x) { 
+    return records[x - 1];
 }
 vector<string> split(string Pilihan, char delimiter){
     vector<string> data;
     string temp = "";
-    for (int i = 0; i < Pilihan.length(); i++){
+    for (int i = 0; i <= Pilihan.length(); i++){
         if (Pilihan[i] == delimiter){
             data.push_back(temp);
             temp = "";
@@ -65,16 +75,6 @@ vector<string> split(string Pilihan, char delimiter){
     }
     data.push_back(temp);
     return data;
-}
-int banyakPilihan(){
-    int banyak;
-    for (int i = 1; i < 99 ; i++){
-        if (daftar(i) == ""){
-            banyak = i - 1;
-            break;
-        }
-    }
-    return banyak;
 }
 void deMenu(){
     for(int i=1;i<=banyakPilihan();i++){
@@ -182,6 +182,7 @@ void pembeli(){
     footer();
 }
 int main(){
+    openFile();
     deMenu();
     pembeli();
     tunggu();

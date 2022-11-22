@@ -3,17 +3,15 @@
 
 using namespace std;
 
-int faktorial(int n) {
-    int result = 1;
-    while (n > 0) {
-        result *= n;
-        n--;
-    }
-    return result;
-}
 int main() {
-    int x;
+    int x, hasil = 1;
     cin >> x;
-    cout << faktorial(x) << endl;
+    cout << x << "! = ";
+    while (x > 1) {
+        cout << x << " * ";
+        hasil *= x;
+        x--;
+    }
+    cout << x << " = " << hasil << endl;
     return 0;
 }

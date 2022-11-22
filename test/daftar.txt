@@ -1,0 +1,6 @@
+1/Jagung Manis/5000
+2/Kopi Bubuk/15000
+3/Susu SKM/20000
+4/Mie Indomie/3000
+5/Apel Merah/9000
+END
