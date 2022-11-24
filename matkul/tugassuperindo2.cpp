@@ -139,6 +139,13 @@ void pembelian(){
         cin >> pilihan;
     }while(pilihan == "y");
 }
+void hapusKeranjang(){
+    for (int i = 1; i <= banyakPilihan(); i++){
+        if (keranjang[i] == 0){
+            keranjang.erase(i);
+        }
+    }
+}
 int totalakhir(){
     int t = 0;
     for (auto x : keranjang){
@@ -184,6 +191,7 @@ void pembeli(){
     menu();
     customer();
     pembelian();
+    hapusKeranjang();
     barangygdibeli();
     pembayaran();
     footer();
