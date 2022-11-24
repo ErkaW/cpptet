@@ -13,5 +13,6 @@ int main() {
         x--;
     }
     cout << x << " = " << hasil << endl;
+    system("pause");
     return 0;
 }

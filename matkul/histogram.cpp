@@ -1,35 +1,56 @@
 #include <iostream>
 
 using namespace std;
-
-// histogram class
-class Histogram {
+ 
+class Histogram{
+    private:
+        int *array;
+        int size;
     public:
-        Histogram() {
-            for (int i = 0; i < 10; i++) {
-                data[i] = 0;
+        Histogram(int *array, int size){
+            this->array = array;
+            this->size = size;
+        }
+        void print(){
+            for (int i = 0; i < this->size; i++){
+                cout << this->array[i] << " ";
             }
+            cout << endl;
         }
-        void add(int x) {
-            data[x]++;
-        }
-        void print() {
-            for (int i = 0; i < 10; i++) {
-                cout << i << " : ";
-                for (int j = 0; j < data[i]; j++) {
-                    cout << "*";1
+        void printHistogram(){
+            int biggest = 0;
+            for (int i = 0; i < this->size; i++){
+                if (this->array[i] > biggest){
+                    biggest = this->array[i];
+                }
+            }
+            for (int i = 0; i < this->size; i++){
+                for (int j = 0; j < this->array[i]; j++){
+                    if (j == this->array[i] - 1){
+                        cout << "#";
+                    } else {
+                        cout << "#  ";
+                    }
                 }
                 cout << endl;
             }
-    
+            for (int i = 1; i <= biggest; i++){
+                if ( i <= 9){
+                    cout << i << "  ";
+                } else {
+                    cout << i << " ";
+                }
+            }
+        }
 };
 
 int main() {
-    Histogram h;
-    int x;
-    while (cin >> x) {
-        h.add(x);
-    }
-    h.print();
+    int array[] = {20,13,2,32,8,10};
+    int size = sizeof(array)/sizeof(array[0]);
+    Histogram histogram(array, size);
+    histogram.print();
+    histogram.printHistogram();
+    cout << endl;
+    system("pause");
     return 0;
 }

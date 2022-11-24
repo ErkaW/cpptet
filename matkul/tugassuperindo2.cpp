@@ -39,6 +39,8 @@ int ID[100];
 string Nama[100];
 int Harga[100];
 string records[100];
+string pelanggan;
+int bayar, kembalian;
 int banyakPilihan() {
     ifstream file("produk.txt");
     string line;
@@ -107,6 +109,10 @@ void footer(){
     cout << "||   Terimakasih telah berbelanja   ||" << endl;
     cout << "======================================" << endl;
 }
+void customer(){
+    cout << "Masukkan nama pelanggan : ";
+    cin >> pelanggan;
+}
 map<int, int> keranjang;
 void pembelian(){
     // pembelian tetapi jika salah id maka akan diulang
@@ -150,7 +156,6 @@ void barangygdibeli(){
     cout << "======================================" << endl;
     cout << "Total\t\t= " << totalakhir() << endl;
 }
-int bayar, kembalian;
 void pembayaran(){
     cout << "Masukkan uang yang dibayarkan : ";
     cin >> bayar;
@@ -166,6 +171,7 @@ void nota(){
     clear();
     header();
     tanggal();
+    cout << "Nama pelanggan : " << pelanggan << endl;
     barangygdibeli();
     cout << "Bayar\t\t= " << bayar << endl;
     cout << "Kembalian\t= " << kembalian << endl;
@@ -176,6 +182,7 @@ void pembeli(){
     tanggal();
     waktu();
     menu();
+    customer();
     pembelian();
     barangygdibeli();
     pembayaran();

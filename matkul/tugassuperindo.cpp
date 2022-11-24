@@ -5,16 +5,13 @@
 #include <ctime>
 #include <stdlib.h>
 using namespace std;
+int ID[100];
+string Nama[100];
+int Harga[100];
+string pelanggan;
+int bayar, kembalian;
+map<int, int> keranjang;
 void waktu(){
-    time_t now = time(0);
-    char* dt = ctime(&now);
-    tm *ltm = localtime(&now);
-    int jam = ltm->tm_hour;
-    int menit = ltm->tm_min;
-    int detik = ltm->tm_sec;
-    cout << "Waktu   : " << jam << ":" << menit << ":" << detik << endl;
-}
-void tanggal(){
     time_t now = time(0);
     char* dt = ctime(&now);
     tm *ltm = localtime(&now);
@@ -22,21 +19,18 @@ void tanggal(){
     int bulan = ltm->tm_mon + 1;
     int tahun = ltm->tm_year + 1900;
     cout << "Tanggal : " << tanggal << "/" << bulan << "/" << tahun << endl;
+    int jam = ltm->tm_hour;
+    int menit = ltm->tm_min;
+    int detik = ltm->tm_sec;
+    cout << "Waktu   : " << jam << ":" << menit << ":" << detik << endl;
 }
 void tunggu(){
     cout << "Tekan enter untuk melanjutkan...";
     cin.get();
 }
-void tunggunota(){
-    cout << "";
-    cin.get();
-}
 void clear(){
     system("cls");
 }
-int ID[100];
-string Nama[100];
-int Harga[100];
 string daftar(int x){
     string Pilihan = "";
     switch (x)
@@ -107,7 +101,10 @@ void footer(){
     cout << "||   Terimakasih telah berbelanja   ||" << endl;
     cout << "======================================" << endl;
 }
-map<int, int> keranjang;
+void customer(){
+    cout << "Masukkan nama pelanggan : ";
+    cin >> pelanggan;
+}
 void pembelian(){
     // pembelian tetapi jika salah id maka akan diulang
     int id, banyak;
@@ -150,7 +147,6 @@ void barangygdibeli(){
     cout << "======================================" << endl;
     cout << "Total\t\t= " << totalakhir() << endl;
 }
-int bayar, kembalian;
 void pembayaran(){
     cout << "Masukkan uang yang dibayarkan : ";
     cin >> bayar;
@@ -165,7 +161,8 @@ void pembayaran(){
 void nota(){
     clear();
     header();
-    tanggal();
+    waktu();
+    cout << "Nama Pelanggan : " << pelanggan << endl;
     barangygdibeli();
     cout << "Bayar\t\t= " << bayar << endl;
     cout << "Kembalian\t= " << kembalian << endl;
@@ -173,19 +170,18 @@ void nota(){
 }
 void pembeli(){
     header();
-    tanggal();
     waktu();
     menu();
+    customer();
     pembelian();
     barangygdibeli();
     pembayaran();
-    footer();
 }
 int main(){
     deMenu();
     pembeli();
     tunggu();
     nota();
-    tunggunota();
+    tunggu();
     return 0;
 }
